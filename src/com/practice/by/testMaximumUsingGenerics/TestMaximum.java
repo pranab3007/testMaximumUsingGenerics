@@ -1,5 +1,9 @@
 package com.practice.by.testMaximumUsingGenerics;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class TestMaximum {
 	public static void main(String[] args) {
 		Integer[] integerList = { 9, 2, 3 };
@@ -10,6 +14,12 @@ public class TestMaximum {
 		
 		String[] stringList = { "BIGGEZZZ", "BIGGEST", "BIG" };
 		System.out.println(largestObject(stringList));
+		
+		List <Integer> objList = new LinkedList<Integer>();
+		objList.add(22);
+		objList.add(44);
+		System.out.println("Max number :: " +testMaximum(objList));
+		
 	}
 
 	public static <T extends Object & Comparable<T>> T largestObject(T[] numbers) {
@@ -31,6 +41,10 @@ public class TestMaximum {
 		}
 
 		return largestVal;
+	}
+	
+	public static <T> T testMaximum(List<T> objList) {
+	    return objList.stream().sorted().collect(Collectors.toList()).get(objList.size()-1);
 	}
 
 }
